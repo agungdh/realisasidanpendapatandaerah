@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ProgramRepo extends JpaRepository<Program, Long> {
-    List<Program> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIs(int kodeUrusan, int KodeBidang, int KodeUnit, int KodeSubUnit, int tahun);
+    List<Program> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIs(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int tahun);
 }

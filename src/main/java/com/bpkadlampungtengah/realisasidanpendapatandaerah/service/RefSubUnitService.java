@@ -22,7 +22,7 @@ public class RefSubUnitService {
         return refSubUnitRepo.findAll();
     }
 
-    public RefSubUnit findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(int kodeUrusan, int KodeBidang, int KodeUnit, int KodeSubUnit) {
-        return refSubUnitRepo.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(kodeUrusan, KodeBidang, KodeUnit, KodeSubUnit);
+    public RefSubUnit findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit) {
+        return refSubUnitRepo.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(kodeUrusan, kodeBidang, kodeUnit, kodeSubUnit);
     }
 }

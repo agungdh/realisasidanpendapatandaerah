@@ -20,7 +20,7 @@ public class ProgramService {
         this.programRepo = programRepo;
     }
 
-    public List<Program> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(int kodeUrusan, int KodeBidang, int KodeUnit, int KodeSubUnit) {
-        return programRepo.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIs(kodeUrusan, KodeBidang, KodeUnit, KodeSubUnit, 2021);
+    public List<Program> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit) {
+        return programRepo.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIs(kodeUrusan, kodeBidang, kodeUnit, kodeSubUnit, 2021);
     }
 }
