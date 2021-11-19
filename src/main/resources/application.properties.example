@@ -1,0 +1,16 @@
+spring.datasource.url= jdbc:sqlserver://172.16.3.234;databaseName=KEU2903_2021_dev;
+spring.datasource.username= sa
+spring.datasource.password= password123!
+
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto= validate
+
+server.port=8080
+server.address=127.0.0.1
+
+management.endpoints.web.exposure.include=*
+management.server.port=8081
+management.server.address=127.0.0.1
