@@ -1,9 +1,9 @@
-spring.datasource.url= jdbc:sqlserver://172.16.3.234;databaseName=KEU2903_2021_dev;
-spring.datasource.username= sa
-spring.datasource.password= password123!
+spring.datasource.url= jdbc:sqlserver://localhost;databaseName=db;
+spring.datasource.username= user
+spring.datasource.password= password
 
 spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation= true
-spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.SQLServer2012Dialect
 
 # Hibernate ddl auto (create, create-drop, validate, update)
 spring.jpa.hibernate.ddl-auto= validate

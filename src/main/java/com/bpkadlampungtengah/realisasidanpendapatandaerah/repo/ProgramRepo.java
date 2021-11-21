@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ProgramRepo extends JpaRepository<Program, Long> {
     List<Program> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIs(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int tahun);
+    Program findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunAndKodeProgramAndIdProgram(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int tahun, int kodeProgram, int idProgram);
 }

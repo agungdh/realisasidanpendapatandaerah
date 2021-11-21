@@ -20,7 +20,11 @@ public class KegiatanService {
         this.kegiatanRepo = kegiatanRepo;
     }
 
-    public List<Kegiatan> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int kodeProgram, int idProgram) {
+    public List<Kegiatan> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIsAndKodeProgramAndIdProgram(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int kodeProgram, int idProgram) {
         return kegiatanRepo.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIsAndKodeProgramAndIdProgram(kodeUrusan, kodeBidang, kodeUnit, kodeSubUnit, 2021, kodeProgram, idProgram);
+    }
+
+    public Kegiatan findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIsAndKodeProgramAndIdProgramAndKodeKegiatan(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int kodeProgram, int idProgram, int kodeKegiatan) {
+        return kegiatanRepo.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIsAndKodeProgramAndIdProgramAndKodeKegiatan(kodeUrusan, kodeBidang, kodeUnit, kodeSubUnit, 2021, kodeProgram, idProgram, kodeKegiatan);
     }
 }

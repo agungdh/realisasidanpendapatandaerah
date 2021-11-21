@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface KegiatanRepo extends JpaRepository<Kegiatan, Long> {
     List<Kegiatan> findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIsAndKodeProgramAndIdProgram(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int tahun, int kodeProgram, int idProgram);
+    Kegiatan findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIsAndKodeProgramAndIdProgramAndKodeKegiatan(int kodeUrusan, int kodeBidang, int kodeUnit, int kodeSubUnit, int tahun, int kodeProgram, int idProgram, int kodeKegiatan);
 }

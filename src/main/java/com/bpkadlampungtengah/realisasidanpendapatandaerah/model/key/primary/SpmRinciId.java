@@ -5,13 +5,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class RefSubUnitId implements Serializable {
-    private int kodeUrusan;
-    private int kodeBidang;
-    private int kodeUnit;
-    private int kodeSubUnit;
+public class SpmRinciId implements Serializable {
+    private int tahun;
+    private String noSpm;
+    private int noId;
 }

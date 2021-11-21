@@ -31,7 +31,7 @@ public class KegiatanResource {
             @PathVariable("kodeProgram") int kodeProgram,
             @PathVariable("idProgram") int idProgram
     ) {
-        List<Kegiatan> kegiatans = kegiatanService.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnit(
+        List<Kegiatan> kegiatans = kegiatanService.findByKodeUrusanAndKodeBidangAndKodeUnitAndKodeSubUnitAndTahunIsAndKodeProgramAndIdProgram(
                 KodeUrusan,
                 KodeBidang,
                 KodeUnit,

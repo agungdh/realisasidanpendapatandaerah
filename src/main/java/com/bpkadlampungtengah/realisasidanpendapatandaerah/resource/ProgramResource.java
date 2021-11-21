@@ -1,5 +1,6 @@
 package com.bpkadlampungtengah.realisasidanpendapatandaerah.resource;
 
+import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.Kegiatan;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.Program;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.RefSubUnit;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.service.ProgramService;
@@ -20,6 +21,31 @@ public class ProgramResource {
 
     public ProgramResource(ProgramService programService) {
         this.programService = programService;
+    }
+
+    @GetMapping("/{KodeUrusan}/{KodeBidang}/{KodeUnit}/{KodeSubUnit}/{kodeProgram}/{idProgram}")
+    public ResponseEntity<Program> programLur (
+            @PathVariable("KodeUrusan") int KodeUrusan,
+            @PathVariable("KodeBidang") int KodeBidang,
+            @PathVariable("KodeUnit") int KodeUnit,
+            @PathVariable("KodeSubUnit") int KodeSubUnit,
+            @PathVariable("kodeProgram") int kodeProgram,
+            @PathVariable("idProgram") int idProgram
+    ) {
+        Program program = programService.ambil1Program(
+                KodeUrusan,
+                KodeBidang,
+                KodeUnit,
+                KodeSubUnit,
+                kodeProgram,
+                idProgram
+        );
+
+        if (program != null) {
+            return new ResponseEntity<>(program, HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{KodeUrusan}/{KodeBidang}/{KodeUnit}/{KodeSubUnit}")
