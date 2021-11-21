@@ -2,10 +2,7 @@ package com.bpkadlampungtengah.realisasidanpendapatandaerah.model;
 
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.key.primary.ProgramId;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.key.primary.RefSubUnitId;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,8 +10,7 @@ import java.math.BigDecimal;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @IdClass(ProgramId.class)
 @Table(name = "ta_program")
 public class Program {
@@ -51,4 +47,13 @@ public class Program {
     private int kodeUrusan1;
     @Column(name="kd_bidang1", nullable = false, columnDefinition = "tinyint")
     private int kodeBidang1;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name="kd_urusan", referencedColumnName="kd_urusan", insertable = false, updatable = false),
+            @JoinColumn(name="kd_bidang", referencedColumnName="kd_bidang", insertable = false, updatable = false),
+            @JoinColumn(name="kd_unit", referencedColumnName="kd_unit", insertable = false, updatable = false),
+            @JoinColumn(name="kd_sub", referencedColumnName="kd_sub", insertable = false, updatable = false)
+    })
+    private RefSubUnit refSubUnit;
 }

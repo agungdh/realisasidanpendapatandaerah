@@ -2,19 +2,19 @@ package com.bpkadlampungtengah.realisasidanpendapatandaerah.model;
 
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.key.primary.KegiatanId;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.key.primary.ProgramId;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.FetchMode;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @IdClass(KegiatanId.class)
 @Table(name = "ta_kegiatan")
 public class Kegiatan {
@@ -56,4 +56,16 @@ public class Kegiatan {
     private String waktuPelaksanaan;
     @Column(name="kd_sumber", columnDefinition = "tinyint")
     private String kodeSumber;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumns({
+            @JoinColumn(name="tahun", referencedColumnName="tahun", insertable = false, updatable = false),
+            @JoinColumn(name="kd_urusan", referencedColumnName="kd_urusan", insertable = false, updatable = false),
+            @JoinColumn(name="kd_bidang", referencedColumnName="kd_bidang", insertable = false, updatable = false),
+            @JoinColumn(name="kd_unit", referencedColumnName="kd_unit", insertable = false, updatable = false),
+            @JoinColumn(name="kd_sub", referencedColumnName="kd_sub", insertable = false, updatable = false),
+            @JoinColumn(name="kd_prog", referencedColumnName="kd_prog", insertable = false, updatable = false),
+            @JoinColumn(name="id_prog", referencedColumnName="id_prog", insertable = false, updatable = false)
+    })
+    private Program program;
 }

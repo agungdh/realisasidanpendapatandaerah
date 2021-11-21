@@ -1,14 +1,18 @@
 package com.bpkadlampungtengah.realisasidanpendapatandaerah.service;
 
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.Kegiatan;
+import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.Realisasi;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.SpmRinci;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.repo.KegiatanRepo;
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.repo.SpmRinciRepo;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -21,7 +25,7 @@ public class SpmRinciService {
         this.spmRinciRepo = spmRinciRepo;
     }
 
-    public BigDecimal findSumOfNilaiSpmRinci(
+    public List<HashMap<String, Object>> findSumOfNilaiSpmRinci(
             int kodeUrusan,
             int kodeBidang,
             int kodeUnit,
@@ -30,7 +34,7 @@ public class SpmRinciService {
             int idProgram,
             int kodeKegiatan
     ) {
-        return spmRinciRepo.findSumOfNilaiSpmRinci(
+        List<Object[]> results = spmRinciRepo.findSumOfNilaiSpmRinci(
             2021,
             kodeUrusan,
             kodeBidang,
@@ -40,5 +44,27 @@ public class SpmRinciService {
             idProgram,
             kodeKegiatan
         );
+
+        Gson gson = new Gson();
+
+        List<HashMap<String, Object>> listHehe = new ArrayList<>();
+
+        for (int i = 0; i < results.size(); i++) {
+            HashMap<String, Object> hasil = new HashMap<>();
+            hasil.put("realisasi", results.get(i)[0]);
+            hasil.put("kodeRek90_1", results.get(i)[1]);
+            hasil.put("kodeRek90_2", results.get(i)[2]);
+            hasil.put("kodeRek90_3", results.get(i)[3]);
+            hasil.put("kodeRek90_4", results.get(i)[4]);
+            hasil.put("kodeRek90_5", results.get(i)[5]);
+            hasil.put("kodeRek90_6", results.get(i)[6]);
+
+            listHehe.add(hasil);
+
+//            System.out.println(gson.toJson(results.get(i)).toString());
+//            System.out.println(results.get(i).toString());
+        }
+
+        return listHehe;
     }
 }

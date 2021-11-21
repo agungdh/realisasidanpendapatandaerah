@@ -1,10 +1,7 @@
 package com.bpkadlampungtengah.realisasidanpendapatandaerah.model;
 
 import com.bpkadlampungtengah.realisasidanpendapatandaerah.model.key.primary.RefSubUnitId;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,8 +9,7 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @IdClass(RefSubUnitId.class)
 @Table(name = "ref_sub_unit")
 public class RefSubUnit {
