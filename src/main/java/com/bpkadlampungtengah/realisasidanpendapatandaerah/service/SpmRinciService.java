@@ -51,13 +51,21 @@ public class SpmRinciService {
 
         for (int i = 0; i < results.size(); i++) {
             HashMap<String, Object> hasil = new HashMap<>();
-            hasil.put("realisasi", results.get(i)[0]);
-            hasil.put("kodeRek90_1", results.get(i)[1]);
-            hasil.put("kodeRek90_2", results.get(i)[2]);
-            hasil.put("kodeRek90_3", results.get(i)[3]);
-            hasil.put("kodeRek90_4", results.get(i)[4]);
-            hasil.put("kodeRek90_5", results.get(i)[5]);
-            hasil.put("kodeRek90_6", results.get(i)[6]);
+            hasil.put("kodeRek90_1", results.get(i)[0]);
+            hasil.put("kodeRek90_2", results.get(i)[1]);
+            hasil.put("kodeRek90_3", results.get(i)[2]);
+            hasil.put("kodeRek90_4", results.get(i)[3]);
+            hasil.put("kodeRek90_5", results.get(i)[4]);
+            hasil.put("kodeRek90_6", results.get(i)[5]);
+            hasil.put("namaRek90_6", results.get(i)[6]);
+            hasil.put("kodeRek_1", results.get(i)[7]);
+            hasil.put("kodeRek_2", results.get(i)[8]);
+            hasil.put("kodeRek_3", results.get(i)[9]);
+            hasil.put("kodeRek_4", results.get(i)[10]);
+            hasil.put("kodeRek_5", results.get(i)[11]);
+            hasil.put("namaRek_5", results.get(i)[12]);
+            hasil.put("anggaran", results.get(i)[13]);
+            hasil.put("realisasi", results.get(i)[14]);
 
             listHehe.add(hasil);
 

@@ -12,13 +12,37 @@ import java.util.List;
 
 public interface SpmRinciRepo extends JpaRepository<SpmRinci, Long> {
         @Query(value = "select \n" +
-                "sum(ta_spm_rinc.nilai) as realisasi,\n" +
                 "ref_rek90_6.kd_rek90_1,\n" +
                 "ref_rek90_6.kd_rek90_2,\n" +
                 "ref_rek90_6.kd_rek90_3,\n" +
                 "ref_rek90_6.kd_rek90_4,\n" +
                 "ref_rek90_6.kd_rek90_5,\n" +
-                "ref_rek90_6.kd_rek90_6\n" +
+                "ref_rek90_6.kd_rek90_6,\n" +
+                "max(ref_rek90_6.nm_rek90_6) as nm_rek90_6,\n" +
+                "max(ta_spm_rinc.kd_rek_1) as kd_rek_1,\n" +
+                "max(ta_spm_rinc.kd_rek_2) as kd_rek_2,\n" +
+                "max(ta_spm_rinc.kd_rek_3) as kd_rek_3,\n" +
+                "max(ta_spm_rinc.kd_rek_4) as kd_rek_4,\n" +
+                "max(ta_spm_rinc.kd_rek_5) as kd_rek_5,\n" +
+                "max(ref_rek_5.nm_rek_5) as nm_rek_5,\n" +
+                "(\n" +
+                "select sum(total) as total\n" +
+                "from ta_belanja_rinc_sub as __tbrs\n" +
+                "where __tbrs.tahun = ta_kegiatan.tahun\n" +
+                "and __tbrs.kd_urusan = ta_kegiatan.kd_urusan\n" +
+                "and __tbrs.kd_bidang = ta_kegiatan.kd_bidang\n" +
+                "and __tbrs.kd_unit = ta_kegiatan.kd_unit\n" +
+                "and __tbrs.kd_sub = ta_kegiatan.kd_sub\n" +
+                "and __tbrs.kd_prog = ta_kegiatan.kd_prog\n" +
+                "and __tbrs.id_prog = ta_kegiatan.id_prog\n" +
+                "and __tbrs.kd_keg = ta_kegiatan.kd_keg\n" +
+                "and __tbrs.kd_rek_1 = max(ta_spm_rinc.kd_rek_1)\n" +
+                "and __tbrs.kd_rek_2 = max(ta_spm_rinc.kd_rek_2)\n" +
+                "and __tbrs.kd_rek_3 = max(ta_spm_rinc.kd_rek_3)\n" +
+                "and __tbrs.kd_rek_4 = max(ta_spm_rinc.kd_rek_4)\n" +
+                "and __tbrs.kd_rek_5 = max(ta_spm_rinc.kd_rek_5)\n" +
+                ") as anggaran,\n" +
+                "sum(ta_spm_rinc.nilai) as realisasi\n" +
                 "from ta_spm_rinc\n" +
                 "join ta_spm\n" +
                 "on ta_spm.tahun = ta_spm_rinc.tahun\n" +
@@ -102,7 +126,15 @@ public interface SpmRinciRepo extends JpaRepository<SpmRinci, Long> {
                 "ref_rek90_6.kd_rek90_3,\n" +
                 "ref_rek90_6.kd_rek90_4,\n" +
                 "ref_rek90_6.kd_rek90_5,\n" +
-                "ref_rek90_6.kd_rek90_6",
+                "ref_rek90_6.kd_rek90_6,\n" +
+                "ta_kegiatan.tahun,\n" +
+                "ta_kegiatan.kd_urusan,\n" +
+                "ta_kegiatan.kd_bidang,\n" +
+                "ta_kegiatan.kd_unit,\n" +
+                "ta_kegiatan.kd_sub,\n" +
+                "ta_kegiatan.kd_prog,\n" +
+                "ta_kegiatan.id_prog,\n" +
+                "ta_kegiatan.kd_keg",
             nativeQuery = true)
         List<Object[]> findSumOfNilaiSpmRinci(
             @Param("tahun") int tahun,
